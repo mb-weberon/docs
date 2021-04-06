@@ -359,8 +359,9 @@ app.on('connection', connection =>
 app.publish(data => app.channel('everybody'));
 
 // Start the server
-app.listen(3030).on('listening', () =>
-  console.log('Feathers server listening on localhost:3030')
+let port=3030;
+app.listen(port).on('listening', () =>
+  console.log('Feathers server listening on localhost:' + port)
 );
 
 // For good measure let's create a message
@@ -423,7 +424,7 @@ Now we can look at one of the really cool features of Feathers. It works the sam
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script type="text/javascript">
     // Set up socket.io
-    const socket = io('http://localhost:3030');
+    const socket = io(window.location.href);
     // Initialize a Feathers app
     const app = feathers();
     
